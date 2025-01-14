@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreNoticiaRequest;
-use App\Http\Requests\UpdateNoticiaRequest;
 use App\Models\Noticia;
+use Illuminate\Http\Request;
 
 class NoticiaController extends Controller
 {
@@ -13,7 +12,9 @@ class NoticiaController extends Controller
      */
     public function index()
     {
-        //
+        return view('noticias.index', [
+            'noticias' => Noticia::with('user')->get(),
+        ]);
     }
 
     /**
@@ -27,7 +28,7 @@ class NoticiaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreNoticiaRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -51,7 +52,7 @@ class NoticiaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNoticiaRequest $request, Noticia $noticia)
+    public function update(Request $request, Noticia $noticia)
     {
         //
     }
